@@ -5,6 +5,7 @@ __pycache__/
 venv/
 sample_subject/.venv/
 reports/
+*.egg-info/
 
 # Ignore generated audit JSON except committed platform bundles.
 **/pip_audit_report.json
