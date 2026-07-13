@@ -1,0 +1,122 @@
+[
+  {
+    "name": "boolean.py",
+    "license": "BSD-2-Clause"
+  },
+  {
+    "name": "CacheControl",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "certifi",
+    "license": "MPL-2.0"
+  },
+  {
+    "name": "charset-normalizer",
+    "license": "MIT"
+  },
+  {
+    "name": "cyclonedx-python-lib",
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "defusedxml",
+    "license": "PSFL"
+  },
+  {
+    "name": "filelock",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "idna",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "license-expression",
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "markdown-it-py",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "mdurl",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "msgpack",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "packageurl-python",
+    "license": "MIT"
+  },
+  {
+    "name": "packaging",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "pip",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "pipdeptree",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "pip-api",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "pip_audit",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "pip-requirements-parser",
+    "license": "MIT"
+  },
+  {
+    "name": "platformdirs",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "Pygments",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "pyparsing",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "py-serializable",
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "requests",
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "rich",
+    "license": "MIT"
+  },
+  {
+    "name": "sortedcontainers",
+    "license": "Apache 2.0"
+  },
+  {
+    "name": "tomli",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "tomli_w",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "typing_extensions",
+    "license": "UNKNOWN"
+  },
+  {
+    "name": "urllib3",
+    "license": "UNKNOWN"
+  }
+]

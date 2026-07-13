@@ -1,0 +1,64 @@
+{
+  "tool": "pip-audit",
+  "target_repository": "sample_subject",
+  "scores": {
+    "Transitive Dependency Analysis": 100.0,
+    "License Compliance Testing": 100.0,
+    "Supply Chain Security Analysis": 100.0,
+    "Dependency Health Monitoring": 100.0,
+    "Risk Prioritization": 100.0,
+    "Continuous Dependency Monitoring": 100.0,
+    "Vulnerability Dependency Detection": 100.0,
+    "Outdated Dependency Detection": 100.0
+  },
+  "metrics": [
+    {
+      "classification": "Transitive Dependency Analysis",
+      "value": "100/100",
+      "result": "PASS",
+      "coverage_percent": 100.0
+    },
+    {
+      "classification": "License Compliance Testing",
+      "value": "100/100",
+      "result": "PASS",
+      "coverage_percent": 100.0
+    },
+    {
+      "classification": "Supply Chain Security Analysis",
+      "value": "100/100",
+      "result": "PASS",
+      "coverage_percent": 100.0
+    },
+    {
+      "classification": "Dependency Health Monitoring",
+      "value": "100/100",
+      "result": "PASS",
+      "coverage_percent": 100.0
+    },
+    {
+      "classification": "Risk Prioritization",
+      "value": "100/100",
+      "result": "PASS",
+      "coverage_percent": 100.0
+    },
+    {
+      "classification": "Continuous Dependency Monitoring",
+      "value": "100/100",
+      "result": "PASS",
+      "coverage_percent": 100.0
+    },
+    {
+      "classification": "Vulnerability Dependency Detection",
+      "value": "100/100",
+      "result": "PASS",
+      "coverage_percent": 100.0
+    },
+    {
+      "classification": "Outdated Dependency Detection",
+      "value": "100/100",
+      "result": "PASS",
+      "coverage_percent": 100.0
+    }
+  ]
+}

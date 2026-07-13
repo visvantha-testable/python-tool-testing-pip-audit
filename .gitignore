@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+sample_subject/.venv/
+reports/
+
+# Ignore generated audit JSON except committed platform bundles.
+**/pip_audit_report.json
+!pip_audit_report.json
+!artifacts/training/pip_audit_report.json
+!platform/pip_audit_report.json

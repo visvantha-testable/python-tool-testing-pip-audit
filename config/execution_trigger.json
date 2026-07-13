@@ -1,0 +1,72 @@
+{
+  "metric": "Dependency Risk (SCA)",
+  "strategy": "Security White-box Testing",
+  "tool": "pip-audit",
+  "target_repository": {
+    "name": "sample_subject",
+    "url": "https://github.com/visvantha-testable/python-tool-testing-pip-audit/tree/master/sample_subject",
+    "requirements_path": "sample_subject/requirements.txt",
+    "why": "Bundled clean Python dependencies for 100/100 pip-audit certification"
+  },
+  "trigger_sequence": [
+    {
+      "step": 1,
+      "tool": "pip",
+      "command": "python -m pip install -r requirements.txt",
+      "purpose": "Install pip-audit, pipdeptree, pytest"
+    },
+    {
+      "step": 2,
+      "tool": "pip-audit",
+      "command": "python -m pip_audit -r sample_subject/requirements.txt -f json -o artifacts/training/pip_audit_report.json",
+      "purpose": "Primary tool output — vulnerability scan"
+    },
+    {
+      "step": 3,
+      "tool": "pip",
+      "command": "python -m pip install -r sample_subject/requirements.txt -q",
+      "purpose": "Install sample dependencies for tree/outdated/license collection"
+    },
+    {
+      "step": 4,
+      "tool": "pipdeptree",
+      "command": "python -m pipdeptree --json-tree -o artifacts/training/dependency_tree.json",
+      "purpose": "Transitive dependency tree for Hidden Relationship Mapping"
+    },
+    {
+      "step": 5,
+      "tool": "pip",
+      "command": "python -m pip list --outdated --format=json > artifacts/training/outdated.json",
+      "purpose": "Version lag assessment"
+    },
+    {
+      "step": 6,
+      "tool": "pip_audit_metrics.py",
+      "command": "python pip_audit_metrics.py --audit-json artifacts/training/pip_audit_report.json --tree-json artifacts/training/dependency_tree.json --outdated-json artifacts/training/outdated.json --licenses-json artifacts/training/licenses.json --output-json artifacts/training/metrics.json --dashboard-json artifacts/training/dashboard.json",
+      "purpose": "Derive all 8 SCA dashboard metrics (0-100 scale)"
+    }
+  ],
+  "one_shot_script": ".\\run_pip_audit_analysis.ps1",
+  "required_pip_audit_fields": [
+    "dependencies",
+    "dependencies[].name",
+    "dependencies[].version",
+    "dependencies[].vulns"
+  ],
+  "expected_sample_output": {
+    "total_dependencies": 37,
+    "direct_dependencies": 3,
+    "transitive_dependencies": 34,
+    "total_vulnerabilities": 0,
+    "known_cve_count": 0,
+    "outdated_dependencies": 0,
+    "transitive_dependency_score": 100,
+    "license_compliance_score": 100,
+    "supply_chain_score": 100,
+    "dependency_health_score": 100,
+    "risk_prioritization_score": 100,
+    "continuous_monitoring_score": 100,
+    "vulnerability_detection_score": 100,
+    "outdated_dependency_score": 100
+  }
+}
