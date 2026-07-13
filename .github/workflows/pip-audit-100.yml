@@ -14,10 +14,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Run 100% training pipeline
-        run: |
-          pip install -r requirements.txt
-          pwsh ./run_pip_audit_analysis.ps1
+      - name: Run platform trigger (all 8 metrics)
+        run: python pip_audit_trigger.py
       - name: Verify metric coverage
         run: python validate_metric_coverage.py --metrics-json pip_audit_metrics.json
       - name: Verify unified pip_audit.json

@@ -8,63 +8,37 @@
     "requirements_path": "sample_subject/requirements.txt",
     "why": "Bundled clean Python dependencies for 100/100 pip-audit certification"
   },
+  "trigger_command": "python pip_audit_trigger.py",
+  "do_not_use": "python -m pip_audit -f json",
   "trigger_sequence": [
     {
       "step": 1,
-      "tool": "pip",
-      "command": "python -m pip install -r requirements.txt",
-      "purpose": "Install pip-audit, pipdeptree, pytest"
+      "tool": "pip_audit_trigger.py",
+      "command": "python pip_audit_trigger.py",
+      "purpose": "ONE-SHOT: isolated venv + collect 5 artifacts + derive 8 metrics + export pip_audit.json"
     },
     {
       "step": 2,
-      "tool": "collect_artifacts.py",
-      "command": "python scripts/collect_artifacts.py --python sample_subject/.venv/Scripts/python.exe --requirements sample_subject/requirements.txt --output-dir artifacts/training --baseline-audit config/golden_baseline_pip_audit.json",
-      "purpose": "Collect all 5 raw artifacts for 8-metric coverage (audit, tree, outdated, licenses, baseline)"
-    },
-    {
-      "step": 3,
-      "tool": "pip-audit",
-      "command": "python -m pip_audit -r sample_subject/requirements.txt -f json -o artifacts/training/pip_audit_report.json",
-      "purpose": "Primary tool output — vulnerability scan (also collected by step 2)"
-    },
-    {
-      "step": 4,
-      "tool": "pipdeptree",
-      "command": "python -m pipdeptree --json-tree > artifacts/training/dependency_tree.json",
-      "purpose": "Transitive dependency tree for Hidden Relationship Mapping"
-    },
-    {
-      "step": 5,
-      "tool": "pip",
-      "command": "python -m pip list --outdated --format=json > artifacts/training/outdated.json",
-      "purpose": "Version lag assessment"
-    },
-    {
-      "step": 6,
-      "tool": "pip_audit_metrics.py",
-      "command": "python pip_audit_metrics.py --audit-json artifacts/training/pip_audit_report.json --tree-json artifacts/training/dependency_tree.json --outdated-json artifacts/training/outdated.json --licenses-json artifacts/training/licenses.json --baseline-audit-json artifacts/training/baseline_pip_audit.json --output-json artifacts/training/metrics.json --dashboard-json artifacts/training/dashboard.json",
-      "purpose": "Derive all 8 SCA dashboard metrics (0-100 scale)"
-    },
-    {
-      "step": 8,
-      "tool": "export_platform_bundle.py",
-      "command": "python scripts/export_platform_bundle.py",
-      "purpose": "Export pip_audit.json (single unified output) + platform bundle"
-    },
-    {
-      "step": 9,
       "tool": "verify_pip_audit_json.py",
       "command": "python scripts/verify_pip_audit_json.py --pip-audit-json pip_audit.json",
-      "purpose": "Verify pip_audit.json has all 8 metrics covered=yes and 100/100"
+      "purpose": "Verify all 8 metrics covered=yes and 100/100"
     }
   ],
   "primary_platform_output": "pip_audit.json",
-  "one_shot_script": ".\\run_pip_audit_analysis.ps1",
-  "required_pip_audit_fields": [
-    "dependencies",
-    "dependencies[].name",
-    "dependencies[].version",
-    "dependencies[].vulns"
+  "one_shot_script": "python pip_audit_trigger.py",
+  "one_shot_scripts": [
+    "python pip_audit_trigger.py",
+    ".\\run_trigger.ps1",
+    "./run_trigger.sh",
+    ".\\run_pip_audit_analysis.ps1"
+  ],
+  "required_output_fields": [
+    "output_complete",
+    "metric_coverage_complete",
+    "metrics_covered",
+    "supplemental_raw_data",
+    "metrics",
+    "platform_scores"
   ],
   "expected_sample_output": {
     "total_dependencies": 37,
@@ -73,13 +47,15 @@
     "total_vulnerabilities": 0,
     "known_cve_count": 0,
     "outdated_dependencies": 0,
-    "transitive_dependency_score": 100,
-    "license_compliance_score": 100,
-    "supply_chain_score": 100,
-    "dependency_health_score": 100,
-    "risk_prioritization_score": 100,
-    "continuous_monitoring_score": 100,
-    "vulnerability_detection_score": 100,
-    "outdated_dependency_score": 100
+    "metrics_covered": 8,
+    "metric_coverage_complete": true,
+    "Transitive Dependency Analysis": 100,
+    "License Compliance Testing": 100,
+    "Supply Chain Security Analysis": 100,
+    "Dependency Health Monitoring": 100,
+    "Risk Prioritization": 100,
+    "Continuous Dependency Monitoring": 100,
+    "Vulnerability Dependency Detection": 100,
+    "Outdated Dependency Detection": 100
   }
 }

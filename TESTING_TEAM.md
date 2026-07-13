@@ -7,9 +7,13 @@ This repo is maintained for **100/100 PASS** on all 8 Dependency Risk (SCA) dash
 ```powershell
 git clone https://github.com/visvantha-testable/python-tool-testing-pip-audit.git
 cd python-tool-testing-pip-audit
-.\run_pip_audit_analysis.ps1
-.\verify_100_percent.ps1
+python pip_audit_trigger.py
+.\verify_pip_audit_json.ps1
 ```
+
+**Do NOT use** `python -m pip_audit -f json` alone — it produces incomplete output (31 packages, no scores).
+
+See **[TRIGGER.md](TRIGGER.md)** for platform trigger instructions.
 
 Expected final lines:
 ```

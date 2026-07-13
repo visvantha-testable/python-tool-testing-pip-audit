@@ -1,11 +1,6 @@
 {
   "dependencies": [
     {
-      "name": "packaging",
-      "version": "25.0",
-      "vulns": []
-    },
-    {
       "name": "platformdirs",
       "version": "4.10.0",
       "vulns": []
@@ -645,7 +640,7 @@
       "dependencies": [
         {
           "name": "packaging",
-          "version": "25.0",
+          "version": "26.2",
           "vulns": []
         },
         {

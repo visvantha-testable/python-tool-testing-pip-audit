@@ -24,6 +24,16 @@ Security White Box **Dependency Risk (SCA)** metric validation using **pip-audit
 | Vulnerability Dependency Detection | Known CVE Count |
 | Outdated Dependency Detection | Version Lag Assessment |
 
+## Platform trigger (REQUIRED — do not run raw pip-audit)
+
+**Run this command on Testable** (not `python -m pip_audit -f json`):
+
+```bash
+python pip_audit_trigger.py
+```
+
+See **[TRIGGER.md](TRIGGER.md)** and `config/platform_trigger.json`.
+
 ## Primary output — single JSON file
 
 **`pip_audit.json`** is the **one unified output file** the Testable platform should read. It contains:
@@ -47,10 +57,9 @@ Expected: **`PASS: pip_audit.json has all 8 metrics covered=yes with 100/100 sco
 ## Quick Start (100/100 certification)
 
 ```powershell
-python -m pip install -r requirements.txt
-.\run_pip_audit_analysis.ps1
+python pip_audit_trigger.py
 python validate_metric_coverage.py --metrics-json pip_audit_metrics.json
-.\verify_100_percent.ps1
+.\verify_pip_audit_json.ps1
 ```
 
 ## Execution trigger
@@ -80,6 +89,7 @@ See **[METRICS_COVERAGE.md](METRICS_COVERAGE.md)** for raw-parameter mapping and
 ```
 python-tool-testing-pip-audit/
 ├── pip_audit_metrics.py          # 8-metric extractor (0-100 scores)
+├── pip_audit_trigger.py            # PLATFORM TRIGGER — run this (not raw pip-audit)
 ├── pip_audit.json                  # PRIMARY — single unified output (all metrics)
 ├── validate_metric_coverage.py   # Verifies all 8 metrics covered
 ├── run_pip_audit_analysis.ps1    # End-to-end pipeline

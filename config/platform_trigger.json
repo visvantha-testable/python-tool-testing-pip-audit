@@ -1,0 +1,57 @@
+{
+  "platform": "Testable",
+  "tool": "pip-audit",
+  "strategy": "Security White-box Testing",
+  "category": "Dependency Risk (SCA)",
+  "repository": "https://github.com/visvantha-testable/python-tool-testing-pip-audit",
+  "branch": "master",
+  "do_not_run_raw_pip_audit_alone": true,
+  "reason": "Raw pip-audit only outputs dependencies+vulns. It does NOT include tree, licenses, outdated, baseline, or /100 scores.",
+  "trigger_command": "python pip_audit_trigger.py",
+  "trigger_command_windows": "python pip_audit_trigger.py",
+  "trigger_command_linux": "python3 pip_audit_trigger.py",
+  "one_shot_scripts": [
+    "pip_audit_trigger.py",
+    "run_trigger.ps1",
+    "run_trigger.sh",
+    "run_pip_audit_analysis.ps1"
+  ],
+  "primary_output_file": "pip_audit.json",
+  "secondary_output_files": [
+    "platform_metrics.json",
+    "pip_audit_metrics.json",
+    "sca_metric_evidence.json",
+    "testable_dashboard.json"
+  ],
+  "requirements_scan_target": "sample_subject/requirements.txt",
+  "isolated_venv": "sample_subject/.venv",
+  "metrics_total": 8,
+  "expected_scores": {
+    "Transitive Dependency Analysis": 100,
+    "License Compliance Testing": 100,
+    "Supply Chain Security Analysis": 100,
+    "Dependency Health Monitoring": 100,
+    "Risk Prioritization": 100,
+    "Continuous Dependency Monitoring": 100,
+    "Vulnerability Dependency Detection": 100,
+    "Outdated Dependency Detection": 100
+  },
+  "required_output_fields": [
+    "output_complete",
+    "metric_coverage_complete",
+    "metrics_covered",
+    "dependencies",
+    "supplemental_raw_data.dependency_tree",
+    "supplemental_raw_data.outdated_packages",
+    "supplemental_raw_data.licenses",
+    "supplemental_raw_data.baseline_audit",
+    "metrics",
+    "platform_scores"
+  ],
+  "verification_commands": [
+    "python validate_metric_coverage.py --metrics-json pip_audit_metrics.json",
+    "python scripts/verify_100_percent.py --metrics-json pip_audit_metrics.json --dashboard-json dashboard_metrics.json",
+    "python scripts/verify_pip_audit_json.py --pip-audit-json pip_audit.json"
+  ],
+  "fallback_if_native_pip_audit_already_ran": "python scripts/enrich_pip_audit_output.py --native-audit <path-to-native-json>"
+}

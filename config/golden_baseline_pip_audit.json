@@ -2,7 +2,7 @@
   "dependencies": [
     {
       "name": "packaging",
-      "version": "25.0",
+      "version": "26.2",
       "vulns": []
     },
     {

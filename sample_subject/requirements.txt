@@ -1,4 +1,4 @@
-# Latest stable pins — zero CVEs, zero outdated packages for 100/100 certification.
-packaging==25.0
+# Latest stable pins — zero CVEs, zero outdated, MIT/BSD only for 100/100.
+packaging==26.2
 platformdirs==4.10.0
 typing_extensions==4.16.0
