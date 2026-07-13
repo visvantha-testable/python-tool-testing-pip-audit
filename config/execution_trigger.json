@@ -17,20 +17,20 @@
     },
     {
       "step": 2,
-      "tool": "pip-audit",
-      "command": "python -m pip_audit -r sample_subject/requirements.txt -f json -o artifacts/training/pip_audit_report.json",
-      "purpose": "Primary tool output — vulnerability scan"
+      "tool": "collect_artifacts.py",
+      "command": "python scripts/collect_artifacts.py --python sample_subject/.venv/Scripts/python.exe --requirements sample_subject/requirements.txt --output-dir artifacts/training --baseline-audit config/golden_baseline_pip_audit.json",
+      "purpose": "Collect all 5 raw artifacts for 8-metric coverage (audit, tree, outdated, licenses, baseline)"
     },
     {
       "step": 3,
-      "tool": "pip",
-      "command": "python -m pip install -r sample_subject/requirements.txt -q",
-      "purpose": "Install sample dependencies for tree/outdated/license collection"
+      "tool": "pip-audit",
+      "command": "python -m pip_audit -r sample_subject/requirements.txt -f json -o artifacts/training/pip_audit_report.json",
+      "purpose": "Primary tool output — vulnerability scan (also collected by step 2)"
     },
     {
       "step": 4,
       "tool": "pipdeptree",
-      "command": "python -m pipdeptree --json-tree -o artifacts/training/dependency_tree.json",
+      "command": "python -m pipdeptree --json-tree > artifacts/training/dependency_tree.json",
       "purpose": "Transitive dependency tree for Hidden Relationship Mapping"
     },
     {
@@ -42,8 +42,14 @@
     {
       "step": 6,
       "tool": "pip_audit_metrics.py",
-      "command": "python pip_audit_metrics.py --audit-json artifacts/training/pip_audit_report.json --tree-json artifacts/training/dependency_tree.json --outdated-json artifacts/training/outdated.json --licenses-json artifacts/training/licenses.json --output-json artifacts/training/metrics.json --dashboard-json artifacts/training/dashboard.json",
+      "command": "python pip_audit_metrics.py --audit-json artifacts/training/pip_audit_report.json --tree-json artifacts/training/dependency_tree.json --outdated-json artifacts/training/outdated.json --licenses-json artifacts/training/licenses.json --baseline-audit-json artifacts/training/baseline_pip_audit.json --output-json artifacts/training/metrics.json --dashboard-json artifacts/training/dashboard.json",
       "purpose": "Derive all 8 SCA dashboard metrics (0-100 scale)"
+    },
+    {
+      "step": 7,
+      "tool": "validate_metric_coverage.py",
+      "command": "python validate_metric_coverage.py --metrics-json pip_audit_metrics.json",
+      "purpose": "Verify all 8 metrics have raw parameters, artifacts, and 100/100 scores"
     }
   ],
   "one_shot_script": ".\\run_pip_audit_analysis.ps1",

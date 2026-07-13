@@ -29,6 +29,7 @@ Security White Box **Dependency Risk (SCA)** metric validation using **pip-audit
 ```powershell
 python -m pip install -r requirements.txt
 .\run_pip_audit_analysis.ps1
+python validate_metric_coverage.py --metrics-json pip_audit_metrics.json
 .\verify_100_percent.ps1
 ```
 
@@ -50,16 +51,25 @@ See `config/execution_trigger.json` for the full step sequence and expected outp
 | Vulnerabilities / CVEs | 0 / 0 |
 | Outdated packages | 0 |
 | All 8 SCA dashboard scores | **100/100 PASS** |
+| Metric coverage | **8/8 complete** (`metric_coverage_complete: true`) |
+
+See **[METRICS_COVERAGE.md](METRICS_COVERAGE.md)** for raw-parameter mapping and derivation formulas.
 
 ## Project layout
 
 ```
 python-tool-testing-pip-audit/
 ├── pip_audit_metrics.py          # 8-metric extractor (0-100 scores)
+├── validate_metric_coverage.py   # Verifies all 8 metrics covered
 ├── run_pip_audit_analysis.ps1    # End-to-end pipeline
+├── METRICS_COVERAGE.md           # Full metric → raw data mapping
+├── sca_metric_evidence.json      # Per-metric evidence (generated)
 ├── sample_subject/               # Clean training dependencies
-├── config/                       # Mapping + trigger data
-├── scripts/                      # Platform export + verify gate
+├── config/                       # Mapping + trigger + baseline data
+│   ├── metric_coverage.json      # 8-metric machine-readable map
+│   └── golden_baseline_pip_audit.json
+├── scripts/                      # Platform export + verify + collect
+│   └── collect_artifacts.py      # Collects all 5 raw SCA artifacts
 ├── artifacts/training/           # Golden training outputs
 └── tests/
 ```

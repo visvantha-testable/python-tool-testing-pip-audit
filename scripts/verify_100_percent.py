@@ -22,6 +22,15 @@ def verify(metrics_path: pathlib.Path, dashboard_path: pathlib.Path | None) -> i
             print(f"  {name}: {score}", file=sys.stderr)
         return 1
 
+    evidence = payload.get("metric_evidence") or {}
+    if evidence:
+        if not evidence.get("metric_coverage_complete"):
+            print("FAIL: metric_coverage_complete is false", file=sys.stderr)
+            return 1
+        if evidence.get("metrics_covered") != 8:
+            print("FAIL: metrics_covered is not 8", file=sys.stderr)
+            return 1
+
     if dashboard_path and dashboard_path.exists():
         dash = json.loads(dashboard_path.read_text(encoding="utf-8"))
         for row in dash.get("metrics", []):

@@ -11,13 +11,20 @@ cd python-tool-testing-pip-audit
 .\verify_100_percent.ps1
 ```
 
-Expected final line: **`PASS: all 8 metrics are 100/100`**
+Expected final lines:
+```
+All 8 pip-audit SCA metrics are covered with 100/100 scores.
+PASS: all 8 metrics are 100/100
+```
+
+See **[METRICS_COVERAGE.md](METRICS_COVERAGE.md)** for how each metric is derived from raw data.
 
 ## Files the Testable platform reads (repository ROOT)
 
 | File | Purpose |
 |------|---------|
 | `platform_metrics.json` | **Primary** — L4 classification → integer score `100` |
+| `sca_metric_evidence.json` | **Proof** — per-metric raw parameters + formulas |
 | `pip_audit_report.json` | Raw pip-audit JSON output |
 | `pip_audit_metrics.json` | Full metrics payload |
 | `dashboard_metrics.json` | PASS/FAIL per classification |

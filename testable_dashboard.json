@@ -2,6 +2,9 @@
   "tool": "pip-audit",
   "target_repository": "sample_subject",
   "execution_status": "Completed",
+  "metric_coverage_complete": true,
+  "metrics_covered": 8,
+  "metrics_total": 8,
   "metrics": [
     {
       "classification": "Transitive Dependency Analysis",

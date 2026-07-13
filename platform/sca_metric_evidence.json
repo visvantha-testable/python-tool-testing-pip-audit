@@ -1,0 +1,201 @@
+{
+  "tool": "pip-audit",
+  "metrics_total": 8,
+  "metrics_covered": 8,
+  "metric_coverage_complete": true,
+  "all_scores_100": true,
+  "scores": {
+    "Transitive Dependency Analysis": 100.0,
+    "License Compliance Testing": 100.0,
+    "Supply Chain Security Analysis": 100.0,
+    "Dependency Health Monitoring": 100.0,
+    "Risk Prioritization": 100.0,
+    "Continuous Dependency Monitoring": 100.0,
+    "Vulnerability Dependency Detection": 100.0,
+    "Outdated Dependency Detection": 100.0
+  },
+  "full_metrics_payload": {
+    "total_dependencies": 37,
+    "direct_dependencies": 3,
+    "transitive_dependencies": 34,
+    "total_vulnerabilities": 0,
+    "known_cve_count": 0,
+    "critical_cve_count": 0,
+    "high_cve_count": 0,
+    "medium_cve_count": 0,
+    "low_cve_count": 0,
+    "vulnerabilities_with_fix": 0,
+    "transitive_vulnerable_count": 0,
+    "hidden_relationship_risk": 0.0,
+    "legal_risk_proxy": 0,
+    "supply_chain_risk": 0,
+    "community_vitality_score": 100.0,
+    "mitigation_effort": 0,
+    "alert_signal": 0,
+    "version_lag_count": 0,
+    "outdated_dependencies": 0,
+    "copyleft_license_count": 0,
+    "restricted_license_count": 0,
+    "cve_score": 0.0,
+    "transitive_risk_score": 0.0,
+    "license_risk_score": 0.0,
+    "trust_score": 0.0,
+    "vitality_score": 0.0,
+    "prioritization_coverage_percent": 100.0,
+    "alert_response_rate_percent": 100.0,
+    "version_lag_score": 0.0,
+    "transitive_dependency_score": 100.0,
+    "license_compliance_score": 100.0,
+    "supply_chain_score": 100.0,
+    "dependency_health_score": 100.0,
+    "risk_prioritization_score": 100.0,
+    "continuous_monitoring_score": 100.0,
+    "vulnerability_detection_score": 100.0,
+    "outdated_dependency_score": 100.0
+  },
+  "metric_evidence": [
+    {
+      "classification": "Transitive Dependency Analysis",
+      "l5_metric": "Hidden Relationship Mapping",
+      "score": 100.0,
+      "score_field": "transitive_dependency_score",
+      "pip_audit_native": false,
+      "raw_sources": [
+        "dependency_tree.json",
+        "pip_audit_report.json"
+      ],
+      "raw_parameters": {
+        "transitive_dependencies": 34,
+        "transitive_vulnerable_count": 0,
+        "hidden_relationship_risk": 0.0,
+        "transitive_risk_score": 0.0
+      },
+      "formula": "MAX(0, 100 - transitive_vulnerable_count * 20)",
+      "coverage_complete": true
+    },
+    {
+      "classification": "License Compliance Testing",
+      "l5_metric": "Legal Risk Validation",
+      "score": 100.0,
+      "score_field": "license_compliance_score",
+      "pip_audit_native": false,
+      "raw_sources": [
+        "licenses.json"
+      ],
+      "raw_parameters": {
+        "copyleft_license_count": 0,
+        "restricted_license_count": 0,
+        "legal_risk_proxy": 0,
+        "license_risk_score": 0.0
+      },
+      "formula": "MAX(0, 100 - (copyleft*20 + restricted*10 + legal_risk_proxy))",
+      "coverage_complete": true
+    },
+    {
+      "classification": "Supply Chain Security Analysis",
+      "l5_metric": "Trust Integrity Verification",
+      "score": 100.0,
+      "score_field": "supply_chain_score",
+      "pip_audit_native": true,
+      "raw_sources": [
+        "pip_audit_report.json"
+      ],
+      "raw_parameters": {
+        "total_vulnerabilities": 0,
+        "supply_chain_risk": 0,
+        "trust_score": 0.0
+      },
+      "formula": "MAX(0, 100 - total_vulnerabilities * 5)",
+      "coverage_complete": true
+    },
+    {
+      "classification": "Dependency Health Monitoring",
+      "l5_metric": "Community Vitality Tracking",
+      "score": 100.0,
+      "score_field": "dependency_health_score",
+      "pip_audit_native": true,
+      "raw_sources": [
+        "pip_audit_report.json"
+      ],
+      "raw_parameters": {
+        "total_dependencies": 37,
+        "community_vitality_score": 100.0,
+        "vitality_score": 0.0
+      },
+      "formula": "MAX(0, 100 - (vulnerable_packages / total_dependencies) * 100)",
+      "coverage_complete": true
+    },
+    {
+      "classification": "Risk Prioritization",
+      "l5_metric": "Mitigation Effort Ranking",
+      "score": 100.0,
+      "score_field": "risk_prioritization_score",
+      "pip_audit_native": true,
+      "raw_sources": [
+        "pip_audit_report.json"
+      ],
+      "raw_parameters": {
+        "critical_cve_count": 0,
+        "high_cve_count": 0,
+        "vulnerabilities_with_fix": 0,
+        "prioritization_coverage_percent": 100.0
+      },
+      "formula": "100 if no critical/high CVEs else (crit_high_with_fix / crit_high) * 100",
+      "coverage_complete": true
+    },
+    {
+      "classification": "Continuous Dependency Monitoring",
+      "l5_metric": "Real-Time Alerting",
+      "score": 100.0,
+      "score_field": "continuous_monitoring_score",
+      "pip_audit_native": false,
+      "raw_sources": [
+        "pip_audit_report.json",
+        "baseline_pip_audit.json"
+      ],
+      "raw_parameters": {
+        "alert_signal": 0,
+        "alert_response_rate_percent": 100.0
+      },
+      "formula": "100 if alert_signal == 0 else MAX(0, 100 - alert_signal * 20)",
+      "coverage_complete": true
+    },
+    {
+      "classification": "Vulnerability Dependency Detection",
+      "l5_metric": "Known CVE Count",
+      "score": 100.0,
+      "score_field": "vulnerability_detection_score",
+      "pip_audit_native": true,
+      "raw_sources": [
+        "pip_audit_report.json"
+      ],
+      "raw_parameters": {
+        "known_cve_count": 0,
+        "critical_cve_count": 0,
+        "high_cve_count": 0,
+        "medium_cve_count": 0,
+        "low_cve_count": 0,
+        "cve_score": 0.0
+      },
+      "formula": "MAX(0, 100 - (critical*25 + high*10 + medium*3 + low*1))",
+      "coverage_complete": true
+    },
+    {
+      "classification": "Outdated Dependency Detection",
+      "l5_metric": "Version Lag Assessment",
+      "score": 100.0,
+      "score_field": "outdated_dependency_score",
+      "pip_audit_native": false,
+      "raw_sources": [
+        "outdated.json"
+      ],
+      "raw_parameters": {
+        "outdated_dependencies": 0,
+        "version_lag_count": 0,
+        "version_lag_score": 0.0
+      },
+      "formula": "MAX(0, 100 - (outdated_dependencies*15 + version_lag_count*5))",
+      "coverage_complete": true
+    }
+  ]
+}

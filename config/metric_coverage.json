@@ -1,0 +1,164 @@
+{
+  "tool": "pip-audit",
+  "strategy": "Security White-box Testing",
+  "category": "Dependency Risk (SCA)",
+  "metrics_total": 8,
+  "target_repository": "sample_subject",
+  "requirements_path": "sample_subject/requirements.txt",
+  "metrics": [
+    {
+      "l4_classification": "Transitive Dependency Analysis",
+      "l5_metric": "Hidden Relationship Mapping",
+      "normalized_score_key": "Transitive Dependency Analysis",
+      "score_field": "transitive_dependency_score",
+      "penalty_field": "transitive_risk_score",
+      "pip_audit_native": false,
+      "required_artifacts": [
+        "artifacts/training/pip_audit_report.json",
+        "artifacts/training/dependency_tree.json"
+      ],
+      "raw_parameters": [
+        "transitive_dependencies",
+        "transitive_vulnerable_count",
+        "hidden_relationship_risk"
+      ],
+      "formula": "MAX(0, 100 - transitive_vulnerable_count * 20)",
+      "collector_command": "python -m pipdeptree --json-tree",
+      "expected_score": 100
+    },
+    {
+      "l4_classification": "License Compliance Testing",
+      "l5_metric": "Legal Risk Validation",
+      "normalized_score_key": "License Compliance Testing",
+      "score_field": "license_compliance_score",
+      "penalty_field": "license_risk_score",
+      "pip_audit_native": false,
+      "required_artifacts": [
+        "artifacts/training/licenses.json"
+      ],
+      "raw_parameters": [
+        "copyleft_license_count",
+        "restricted_license_count",
+        "legal_risk_proxy"
+      ],
+      "formula": "MAX(0, 100 - (copyleft*20 + restricted*10 + legal_risk_proxy))",
+      "collector_command": "importlib.metadata license export",
+      "expected_score": 100
+    },
+    {
+      "l4_classification": "Supply Chain Security Analysis",
+      "l5_metric": "Trust Integrity Verification",
+      "normalized_score_key": "Supply Chain Security Analysis",
+      "score_field": "supply_chain_score",
+      "penalty_field": "trust_score",
+      "pip_audit_native": true,
+      "required_artifacts": [
+        "artifacts/training/pip_audit_report.json"
+      ],
+      "raw_parameters": [
+        "total_vulnerabilities",
+        "supply_chain_risk"
+      ],
+      "formula": "MAX(0, 100 - total_vulnerabilities * 5)",
+      "collector_command": "python -m pip_audit -r sample_subject/requirements.txt -f json",
+      "expected_score": 100
+    },
+    {
+      "l4_classification": "Dependency Health Monitoring",
+      "l5_metric": "Community Vitality Tracking",
+      "normalized_score_key": "Dependency Health Monitoring",
+      "score_field": "dependency_health_score",
+      "penalty_field": "vitality_score",
+      "pip_audit_native": true,
+      "required_artifacts": [
+        "artifacts/training/pip_audit_report.json"
+      ],
+      "raw_parameters": [
+        "total_dependencies",
+        "community_vitality_score",
+        "vulnerabilities_with_fix"
+      ],
+      "formula": "MAX(0, 100 - (vulnerable_packages / total_dependencies) * 100)",
+      "collector_command": "python -m pip_audit -r sample_subject/requirements.txt -f json",
+      "expected_score": 100
+    },
+    {
+      "l4_classification": "Risk Prioritization",
+      "l5_metric": "Mitigation Effort Ranking",
+      "normalized_score_key": "Risk Prioritization",
+      "score_field": "risk_prioritization_score",
+      "penalty_field": null,
+      "pip_audit_native": true,
+      "required_artifacts": [
+        "artifacts/training/pip_audit_report.json"
+      ],
+      "raw_parameters": [
+        "critical_cve_count",
+        "high_cve_count",
+        "vulnerabilities_with_fix",
+        "prioritization_coverage_percent"
+      ],
+      "formula": "100 if no critical/high CVEs else (crit_high_with_fix / crit_high) * 100",
+      "collector_command": "python -m pip_audit -r sample_subject/requirements.txt -f json",
+      "expected_score": 100
+    },
+    {
+      "l4_classification": "Continuous Dependency Monitoring",
+      "l5_metric": "Real-Time Alerting",
+      "normalized_score_key": "Continuous Dependency Monitoring",
+      "score_field": "continuous_monitoring_score",
+      "penalty_field": null,
+      "pip_audit_native": false,
+      "required_artifacts": [
+        "artifacts/training/pip_audit_report.json",
+        "artifacts/training/baseline_pip_audit.json"
+      ],
+      "raw_parameters": [
+        "alert_signal",
+        "alert_response_rate_percent"
+      ],
+      "formula": "100 if alert_signal == 0 else MAX(0, 100 - alert_signal * 20)",
+      "collector_command": "baseline vs current pip-audit JSON diff",
+      "expected_score": 100
+    },
+    {
+      "l4_classification": "Vulnerability Dependency Detection",
+      "l5_metric": "Known CVE Count",
+      "normalized_score_key": "Vulnerability Dependency Detection",
+      "score_field": "vulnerability_detection_score",
+      "penalty_field": "cve_score",
+      "pip_audit_native": true,
+      "required_artifacts": [
+        "artifacts/training/pip_audit_report.json"
+      ],
+      "raw_parameters": [
+        "known_cve_count",
+        "critical_cve_count",
+        "high_cve_count",
+        "medium_cve_count",
+        "low_cve_count"
+      ],
+      "formula": "MAX(0, 100 - (critical*25 + high*10 + medium*3 + low*1))",
+      "collector_command": "python -m pip_audit -r sample_subject/requirements.txt -f json",
+      "expected_score": 100
+    },
+    {
+      "l4_classification": "Outdated Dependency Detection",
+      "l5_metric": "Version Lag Assessment",
+      "normalized_score_key": "Outdated Dependency Detection",
+      "score_field": "outdated_dependency_score",
+      "penalty_field": "version_lag_score",
+      "pip_audit_native": false,
+      "required_artifacts": [
+        "artifacts/training/outdated.json"
+      ],
+      "raw_parameters": [
+        "outdated_dependencies",
+        "version_lag_count"
+      ],
+      "formula": "MAX(0, 100 - (outdated_dependencies*15 + version_lag_count*5))",
+      "collector_command": "python -m pip list --outdated --format=json",
+      "expected_score": 100
+    }
+  ]
+}

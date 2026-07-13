@@ -18,3 +18,5 @@ jobs:
         run: |
           pip install -r requirements.txt
           pwsh ./run_pip_audit_analysis.ps1
+      - name: Verify metric coverage
+        run: python validate_metric_coverage.py --metrics-json pip_audit_metrics.json
