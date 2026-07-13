@@ -45,5 +45,7 @@ python (Join-Path $Root "validate_metric_coverage.py") `
 python (Join-Path $Root "scripts\verify_100_percent.py") `
     --metrics-json (Join-Path $Root "pip_audit_metrics.json") `
     --dashboard-json (Join-Path $Root "dashboard_metrics.json")
+python (Join-Path $Root "scripts\verify_pip_audit_json.py") `
+    --pip-audit-json (Join-Path $Root "pip_audit.json")
 
 exit $LASTEXITCODE

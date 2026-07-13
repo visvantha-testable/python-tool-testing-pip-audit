@@ -1,9 +1,6 @@
 {
   "tool": "pip-audit",
   "target_repository": "sample_subject",
-  "total_dependencies": 37,
-  "total_vulnerabilities": 0,
-  "known_cve_count": 0,
   "metrics_total": 8,
   "metrics_covered": 8,
   "metric_coverage_complete": true,

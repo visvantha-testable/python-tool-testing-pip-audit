@@ -8,51 +8,136 @@
   "metrics": [
     {
       "classification": "Transitive Dependency Analysis",
+      "l5_metric": "Hidden Relationship Mapping",
+      "covered": "yes",
+      "score": 100,
       "value": "100/100",
       "result": "PASS",
-      "coverage_percent": 100.0
+      "raw_sources_present": true,
+      "pip_audit_native": false,
+      "raw_parameters": {
+        "transitive_dependencies": 34,
+        "transitive_vulnerable_count": 0,
+        "hidden_relationship_risk": 0.0,
+        "transitive_risk_score": 0.0
+      },
+      "formula": "MAX(0, 100 - transitive_vulnerable_count * 20)"
     },
     {
       "classification": "License Compliance Testing",
+      "l5_metric": "Legal Risk Validation",
+      "covered": "yes",
+      "score": 100,
       "value": "100/100",
       "result": "PASS",
-      "coverage_percent": 100.0
+      "raw_sources_present": true,
+      "pip_audit_native": false,
+      "raw_parameters": {
+        "copyleft_license_count": 0,
+        "restricted_license_count": 0,
+        "legal_risk_proxy": 0,
+        "license_risk_score": 0.0
+      },
+      "formula": "MAX(0, 100 - (copyleft*20 + restricted*10 + legal_risk_proxy))"
     },
     {
       "classification": "Supply Chain Security Analysis",
+      "l5_metric": "Trust Integrity Verification",
+      "covered": "yes",
+      "score": 100,
       "value": "100/100",
       "result": "PASS",
-      "coverage_percent": 100.0
+      "raw_sources_present": true,
+      "pip_audit_native": true,
+      "raw_parameters": {
+        "total_vulnerabilities": 0,
+        "supply_chain_risk": 0,
+        "trust_score": 0.0
+      },
+      "formula": "MAX(0, 100 - total_vulnerabilities * 5)"
     },
     {
       "classification": "Dependency Health Monitoring",
+      "l5_metric": "Community Vitality Tracking",
+      "covered": "yes",
+      "score": 100,
       "value": "100/100",
       "result": "PASS",
-      "coverage_percent": 100.0
+      "raw_sources_present": true,
+      "pip_audit_native": true,
+      "raw_parameters": {
+        "total_dependencies": 37,
+        "community_vitality_score": 100.0,
+        "vitality_score": 0.0
+      },
+      "formula": "MAX(0, 100 - (vulnerable_packages / total_dependencies) * 100)"
     },
     {
       "classification": "Risk Prioritization",
+      "l5_metric": "Mitigation Effort Ranking",
+      "covered": "yes",
+      "score": 100,
       "value": "100/100",
       "result": "PASS",
-      "coverage_percent": 100.0
+      "raw_sources_present": true,
+      "pip_audit_native": true,
+      "raw_parameters": {
+        "critical_cve_count": 0,
+        "high_cve_count": 0,
+        "vulnerabilities_with_fix": 0,
+        "prioritization_coverage_percent": 100.0
+      },
+      "formula": "100 if no critical/high CVEs else (crit_high_with_fix / crit_high) * 100"
     },
     {
       "classification": "Continuous Dependency Monitoring",
+      "l5_metric": "Real-Time Alerting",
+      "covered": "yes",
+      "score": 100,
       "value": "100/100",
       "result": "PASS",
-      "coverage_percent": 100.0
+      "raw_sources_present": true,
+      "pip_audit_native": false,
+      "raw_parameters": {
+        "alert_signal": 0,
+        "alert_response_rate_percent": 100.0
+      },
+      "formula": "100 if alert_signal == 0 else MAX(0, 100 - alert_signal * 20)"
     },
     {
       "classification": "Vulnerability Dependency Detection",
+      "l5_metric": "Known CVE Count",
+      "covered": "yes",
+      "score": 100,
       "value": "100/100",
       "result": "PASS",
-      "coverage_percent": 100.0
+      "raw_sources_present": true,
+      "pip_audit_native": true,
+      "raw_parameters": {
+        "known_cve_count": 0,
+        "critical_cve_count": 0,
+        "high_cve_count": 0,
+        "medium_cve_count": 0,
+        "low_cve_count": 0,
+        "cve_score": 0.0
+      },
+      "formula": "MAX(0, 100 - (critical*25 + high*10 + medium*3 + low*1))"
     },
     {
       "classification": "Outdated Dependency Detection",
+      "l5_metric": "Version Lag Assessment",
+      "covered": "yes",
+      "score": 100,
       "value": "100/100",
       "result": "PASS",
-      "coverage_percent": 100.0
+      "raw_sources_present": true,
+      "pip_audit_native": false,
+      "raw_parameters": {
+        "outdated_dependencies": 0,
+        "version_lag_count": 0,
+        "version_lag_score": 0.0
+      },
+      "formula": "MAX(0, 100 - (outdated_dependencies*15 + version_lag_count*5))"
     }
   ]
 }

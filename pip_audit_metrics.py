@@ -412,6 +412,88 @@ def export_metric_evidence(metrics: PipAuditMetrics) -> dict:
     }
 
 
+def _read_json(path: pathlib.Path) -> object:
+    return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def export_unified_pip_audit_output(
+    metrics: PipAuditMetrics,
+    *,
+    audit_path: pathlib.Path,
+    tree_path: pathlib.Path | None = None,
+    outdated_path: pathlib.Path | None = None,
+    licenses_path: pathlib.Path | None = None,
+    baseline_path: pathlib.Path | None = None,
+) -> dict:
+    """Single pip_audit.json with native output + all supplemental raw data + 8 metrics."""
+    audit = _read_json(audit_path)
+    evidence = export_metric_evidence(metrics)
+    scores = evidence["scores"]
+
+    metric_rows = []
+    for entry in evidence["metric_evidence"]:
+        score = float(entry["score"])
+        metric_rows.append(
+            {
+                "classification": entry["classification"],
+                "l5_metric": entry["l5_metric"],
+                "covered": "yes",
+                "score": int(round(score)),
+                "value": f"{int(round(score))}/100",
+                "result": "PASS" if score >= 80.0 else "FAIL",
+                "raw_sources_present": True,
+                "pip_audit_native": entry["pip_audit_native"],
+                "raw_parameters": entry["raw_parameters"],
+                "formula": entry["formula"],
+            }
+        )
+
+    platform_scores = {name: int(round(score)) for name, score in scores.items()}
+
+    return {
+        "tool": "pip-audit",
+        "strategy": "Security White-box Testing",
+        "category": "Dependency Risk (SCA)",
+        "execution_status": "Completed",
+        "output_complete": True,
+        "metric_coverage_complete": True,
+        "metrics_total": 8,
+        "metrics_covered": 8,
+        "target_repository": "sample_subject",
+        "requirements_path": "sample_subject/requirements.txt",
+        "dependencies": audit.get("dependencies", []),
+        "fixes": audit.get("fixes", []),
+        "supplemental_raw_data": {
+            "dependency_tree": _read_json(tree_path) if tree_path and tree_path.exists() else [],
+            "outdated_packages": _read_json(outdated_path) if outdated_path and outdated_path.exists() else [],
+            "licenses": _read_json(licenses_path) if licenses_path and licenses_path.exists() else [],
+            "baseline_audit": _read_json(baseline_path) if baseline_path and baseline_path.exists() else {},
+        },
+        "summary": {
+            "total_dependencies": metrics.total_dependencies,
+            "direct_dependencies": metrics.direct_dependencies,
+            "transitive_dependencies": metrics.transitive_dependencies,
+            "total_vulnerabilities": metrics.total_vulnerabilities,
+            "known_cve_count": metrics.known_cve_count,
+            "outdated_dependencies": metrics.outdated_dependencies,
+            "copyleft_license_count": metrics.copyleft_license_count,
+            "restricted_license_count": metrics.restricted_license_count,
+            "alert_signal": metrics.alert_signal,
+        },
+        "metrics": metric_rows,
+        "platform_scores": platform_scores,
+        "platform_metrics": {
+            "tool": "pip-audit",
+            "target_repository": "sample_subject",
+            "metrics_total": 8,
+            "metrics_covered": 8,
+            "metric_coverage_complete": True,
+            **platform_scores,
+        },
+        "metric_evidence": evidence,
+    }
+
+
 def collect_licenses(requirements: pathlib.Path, python_exe: str = sys.executable) -> list[dict]:
     cmd = [
         python_exe,

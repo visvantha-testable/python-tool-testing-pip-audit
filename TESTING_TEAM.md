@@ -15,6 +15,7 @@ Expected final lines:
 ```
 All 8 pip-audit SCA metrics are covered with 100/100 scores.
 PASS: all 8 metrics are 100/100
+PASS: pip_audit.json has all 8 metrics covered=yes with 100/100 scores
 ```
 
 See **[METRICS_COVERAGE.md](METRICS_COVERAGE.md)** for how each metric is derived from raw data.
@@ -23,7 +24,8 @@ See **[METRICS_COVERAGE.md](METRICS_COVERAGE.md)** for how each metric is derive
 
 | File | Purpose |
 |------|---------|
-| `platform_metrics.json` | **Primary** — L4 classification → integer score `100` |
+| **`pip_audit.json`** | **PRIMARY** — single unified output with all raw data + 8 metrics (`covered: yes`) |
+| `platform_metrics.json` | L4 classification → integer score `100` |
 | `sca_metric_evidence.json` | **Proof** — per-metric raw parameters + formulas |
 | `pip_audit_report.json` | Raw pip-audit JSON output |
 | `pip_audit_metrics.json` | Full metrics payload |

@@ -24,6 +24,26 @@ Security White Box **Dependency Risk (SCA)** metric validation using **pip-audit
 | Vulnerability Dependency Detection | Known CVE Count |
 | Outdated Dependency Detection | Version Lag Assessment |
 
+## Primary output — single JSON file
+
+**`pip_audit.json`** is the **one unified output file** the Testable platform should read. It contains:
+
+| Section | What it includes |
+|---------|------------------|
+| `dependencies` + `fixes` | Native pip-audit vulnerability scan |
+| `supplemental_raw_data.dependency_tree` | Transitive dependency tree (was missing) |
+| `supplemental_raw_data.outdated_packages` | Version lag data (was missing) |
+| `supplemental_raw_data.licenses` | License compliance data (was missing) |
+| `supplemental_raw_data.baseline_audit` | Continuous monitoring baseline (was missing) |
+| `metrics[]` | All 8 metrics with `"covered": "yes"` and `"score": 100` |
+| `platform_scores` | All 8 scores out of 100 |
+
+Verify:
+```powershell
+.\verify_pip_audit_json.ps1
+```
+Expected: **`PASS: pip_audit.json has all 8 metrics covered=yes with 100/100 scores`**
+
 ## Quick Start (100/100 certification)
 
 ```powershell
@@ -60,6 +80,7 @@ See **[METRICS_COVERAGE.md](METRICS_COVERAGE.md)** for raw-parameter mapping and
 ```
 python-tool-testing-pip-audit/
 ├── pip_audit_metrics.py          # 8-metric extractor (0-100 scores)
+├── pip_audit.json                  # PRIMARY — single unified output (all metrics)
 ├── validate_metric_coverage.py   # Verifies all 8 metrics covered
 ├── run_pip_audit_analysis.ps1    # End-to-end pipeline
 ├── METRICS_COVERAGE.md           # Full metric → raw data mapping

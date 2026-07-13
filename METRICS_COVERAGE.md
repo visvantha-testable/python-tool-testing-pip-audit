@@ -79,7 +79,8 @@ Machine-readable mapping: **`config/metric_coverage.json`**
 
 | File | Purpose |
 |------|---------|
-| `platform_metrics.json` | Primary — 8 integer scores + coverage flags |
+| **`pip_audit.json`** | **PRIMARY** — single file with everything (native + supplemental + scores) |
+| `platform_metrics.json` | 8 integer scores + coverage flags |
 | `sca_metric_evidence.json` | Per-metric raw parameters + formulas + proof |
 | `pip_audit_report.json` | Raw pip-audit output + embedded scores |
 | `pip_audit_metrics.json` | Full metrics payload + `metric_evidence` |

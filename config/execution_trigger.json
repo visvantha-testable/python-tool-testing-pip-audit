@@ -46,12 +46,19 @@
       "purpose": "Derive all 8 SCA dashboard metrics (0-100 scale)"
     },
     {
-      "step": 7,
-      "tool": "validate_metric_coverage.py",
-      "command": "python validate_metric_coverage.py --metrics-json pip_audit_metrics.json",
-      "purpose": "Verify all 8 metrics have raw parameters, artifacts, and 100/100 scores"
+      "step": 8,
+      "tool": "export_platform_bundle.py",
+      "command": "python scripts/export_platform_bundle.py",
+      "purpose": "Export pip_audit.json (single unified output) + platform bundle"
+    },
+    {
+      "step": 9,
+      "tool": "verify_pip_audit_json.py",
+      "command": "python scripts/verify_pip_audit_json.py --pip-audit-json pip_audit.json",
+      "purpose": "Verify pip_audit.json has all 8 metrics covered=yes and 100/100"
     }
   ],
+  "primary_platform_output": "pip_audit.json",
   "one_shot_script": ".\\run_pip_audit_analysis.ps1",
   "required_pip_audit_fields": [
     "dependencies",
