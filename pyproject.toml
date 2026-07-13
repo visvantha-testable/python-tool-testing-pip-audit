@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pip-audit-platform"
+version = "1.0.0"
+description = "pip-audit wrapper that emits Testable-compatible JSON with all 8 SCA metrics"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pip-audit>=2.7.0",
+    "pipdeptree>=2.23.0",
+]
+
+[project.scripts]
+pip-audit-platform = "pip_audit_platform.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["pip_audit_platform*"]

@@ -8,7 +8,8 @@
     "requirements_path": "sample_subject/requirements.txt",
     "why": "Bundled clean Python dependencies for 100/100 pip-audit certification"
   },
-  "trigger_command": "python pip_audit_trigger.py",
+  "trigger_command": "python -m pip_audit_platform -r sample_subject/requirements.txt -f json -o pip_audit.json",
+  "trigger_command_alt": "python pip_audit_trigger.py",
   "do_not_use": "python -m pip_audit -f json",
   "trigger_sequence": [
     {

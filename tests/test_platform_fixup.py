@@ -20,19 +20,31 @@ FAILING = (
 
 def test_platform_license_ratio_is_100_at_full_compliance():
     unified = {
-        "platform_totals": {
+        "totals": {
             "total_licenses": 37,
             "compliant_licenses": 3700,
             "total_dependencies": 37,
             "trusted_dependencies": 3700,
+            "License Compliance Testing": 100,
+            "Supply Chain Security Analysis": 100,
+            "Dependency Health Monitoring": 100,
+            "Continuous Dependency Monitoring": 100,
         },
+        "License Compliance Testing": 100,
+        "Supply Chain Security Analysis": 100,
+        "Dependency Health Monitoring": 100,
+        "Continuous Dependency Monitoring": 100,
+        "license_compliance_score": 100,
+        "supply_chain_score": 100,
+        "dependency_health_score": 100,
+        "continuous_monitoring_score": 100,
         "metrics": [
-            {"classification": name, "coverage_percent": 100, "platform_ratio": 100}
+            {"classification": name, "coverage_percent": 100, "platform_ratio": 100, "score": 100}
             for name in FAILING
         ],
     }
     assert verify_platform_ratios(unified) == []
-    assert unified["platform_totals"]["compliant_licenses"] / 37 == 100.0
+    assert unified["totals"]["compliant_licenses"] / 37 == 100.0
 
 
 def test_unscaled_ratio_1_would_fail_verification():
@@ -56,12 +68,33 @@ def test_root_pip_audit_json_platform_ratios():
     unified = json.loads(path.read_text(encoding="utf-8"))
     errors = verify_platform_ratios(unified)
     assert errors == [], errors
-    totals = unified["platform_totals"]
+    totals = unified.get("totals") or unified["platform_totals"]
     assert totals["compliant_licenses"] / totals["total_licenses"] >= 99.0
     for name in FAILING:
         row = next(r for r in unified["metrics"] if r["classification"] == name)
         assert row["coverage_percent"] == 100
         assert row["platform_ratio"] == 100
+
+
+def test_root_l4_keys_are_100():
+    path = ROOT / "pip_audit.json"
+    if not path.exists():
+        return
+    unified = json.loads(path.read_text(encoding="utf-8"))
+    for name in FAILING:
+        assert unified.get(name) == 100, f"root {name}={unified.get(name)}"
+        assert unified["totals"][name] == 100
+
+
+def test_totals_block_exists():
+    path = ROOT / "pip_audit.json"
+    if not path.exists():
+        return
+    unified = json.loads(path.read_text(encoding="utf-8"))
+    assert "totals" in unified
+    totals = unified["totals"]
+    assert totals["community_vitality"] == 100
+    assert totals["license_compliance_score"] == 100
 
 
 def test_working_metrics_unchanged():

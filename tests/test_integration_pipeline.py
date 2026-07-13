@@ -17,6 +17,7 @@ def test_integration_trigger_produces_valid_pip_audit_json(tmp_path, monkeypatch
     unified = json.loads(golden.read_text(encoding="utf-8"))
     assert unified["metric_coverage_complete"] is True
     assert unified["metrics_covered"] == 8
+    assert "totals" in unified
     assert "platform_totals" in unified
 
     for row in unified["metrics"]:

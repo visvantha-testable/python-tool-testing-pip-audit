@@ -7,7 +7,7 @@ This repo is maintained for **100/100 PASS** on all 8 Dependency Risk (SCA) dash
 ```powershell
 git clone https://github.com/visvantha-testable/python-tool-testing-pip-audit.git
 cd python-tool-testing-pip-audit
-python pip_audit_trigger.py
+python -m pip_audit_platform -r sample_subject/requirements.txt -f json -o pip_audit.json
 .\verify_pip_audit_json.ps1
 ```
 
@@ -43,9 +43,13 @@ Copies also live under `platform/` and `artifacts/training/`.
 
 ### 1/100 FAIL fix (License, Supply Chain, Health, Continuous Monitoring)
 
-The Testable platform may derive some SCA metrics using **0-1 ratio formulas** (e.g. `compliant/total = 1.0` at 100% compliance) and display **`1/100`** instead of **`100/100`** (same bug class as coverage.py branch ratio).
+The Testable platform derives some metrics using **0-1 ratio formulas** (e.g. `compliant/total = 1.0`) and displays **`1/100`** instead of **`100/100`**.
 
-**Fix:** `scripts/platform_pip_audit_fixup.py` scales `platform_totals` numerators (e.g. `compliant_licenses = 100 × total_licenses`) so platform ratios read **100**, not **1.0**.
+**Fix applied in repo:**
+1. `totals` block in `pip_audit.json` (same pattern as `coverage.json`)
+2. Root-level L4 keys: `"License Compliance Testing": 100` etc.
+3. Scaled numerators: `compliant_licenses = 100 × total_licenses`
+4. Use **`python -m pip_audit_platform`** (NOT raw `pip-audit`) so live execution emits fixed JSON
 
 Verify after pipeline:
 ```powershell

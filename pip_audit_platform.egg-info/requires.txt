@@ -1,0 +1,2 @@
+pip-audit>=2.7.0
+pipdeptree>=2.23.0

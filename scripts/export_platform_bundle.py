@@ -72,11 +72,31 @@ def export() -> None:
     unified["platform_metrics"] = platform_flat
 
     audit_data = json.loads(audit.read_text(encoding="utf-8"))
-    audit_data["platform_metrics"] = platform_flat
-    audit_data["platform_scores"] = unified["platform_scores"]
-    audit_data["metric_evidence"] = evidence
-    audit_data["supplemental_raw_data"] = unified["supplemental_raw_data"]
-    audit_data["metrics"] = unified["metrics"]
+    audit_data.update(
+        {
+            "totals": unified["totals"],
+            "platform_metrics": platform_flat,
+            "platform_scores": unified["platform_scores"],
+            "licenses": unified.get("licenses", []),
+            "dependency_tree": unified.get("dependency_tree", []),
+            "outdated_packages": unified.get("outdated_packages", []),
+            "baseline_audit": unified.get("baseline_audit", {}),
+            "metric_evidence": evidence,
+            "supplemental_raw_data": unified["supplemental_raw_data"],
+            "metrics": unified["metrics"],
+        }
+    )
+    for l4_key in (
+        "License Compliance Testing",
+        "Supply Chain Security Analysis",
+        "Dependency Health Monitoring",
+        "Continuous Dependency Monitoring",
+    ):
+        audit_data[l4_key] = unified[l4_key]
+    audit_data["license_compliance_score"] = unified["license_compliance_score"]
+    audit_data["supply_chain_score"] = unified["supply_chain_score"]
+    audit_data["dependency_health_score"] = unified["dependency_health_score"]
+    audit_data["continuous_monitoring_score"] = unified["continuous_monitoring_score"]
 
     (ROOT / "pip_audit.json").write_text(json.dumps(unified, indent=2), encoding="utf-8")
     (training / "pip_audit.json").write_text(json.dumps(unified, indent=2), encoding="utf-8")

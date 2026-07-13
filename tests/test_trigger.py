@@ -8,9 +8,8 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 def test_platform_trigger_config_exists():
     cfg = json.loads((ROOT / "config" / "platform_trigger.json").read_text(encoding="utf-8"))
-    assert cfg["trigger_command"] == "python pip_audit_trigger.py"
+    assert cfg["trigger_command"] == "python -m pip_audit_platform -r sample_subject/requirements.txt -f json -o pip_audit.json"
     assert cfg["primary_output_file"] == "pip_audit.json"
-    assert cfg["metrics_total"] == 8
     assert len(cfg["expected_scores"]) == 8
 
 

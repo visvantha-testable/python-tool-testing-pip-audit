@@ -1,5 +1,9 @@
 [
   {
+    "name": "pip-audit-platform",
+    "license": "UNKNOWN"
+  },
+  {
     "name": "boolean.py",
     "license": "BSD-2-Clause"
   },

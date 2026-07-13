@@ -53,14 +53,25 @@ def verify(path: pathlib.Path) -> int:
         if int(row.get("platform_ratio", 0)) < 100:
             errors.append(f"{name}: platform_ratio below 100")
 
-    totals = payload.get("platform_totals") or {}
-    if totals:
+    totals = payload.get("totals") or payload.get("platform_totals") or {}
+    if not totals:
+        errors.append("missing totals block (Testable reads this like coverage.json)")
+    else:
         tl = int(totals.get("total_licenses", 0))
         if tl > 0 and totals.get("compliant_licenses", 0) / tl < 10:
-            errors.append("platform_totals.compliant_licenses ratio looks unscaled (1/100 bug)")
+            errors.append("totals.compliant_licenses ratio looks unscaled (1/100 bug)")
         td = int(totals.get("total_dependencies", 0))
         if td > 0 and totals.get("trusted_dependencies", 0) / td < 10:
-            errors.append("platform_totals.trusted_dependencies ratio looks unscaled (1/100 bug)")
+            errors.append("totals.trusted_dependencies ratio looks unscaled (1/100 bug)")
+
+    for name in (
+        "License Compliance Testing",
+        "Supply Chain Security Analysis",
+        "Dependency Health Monitoring",
+        "Continuous Dependency Monitoring",
+    ):
+        if int(payload.get(name, 0)) < 100:
+            errors.append(f"root-level {name} is not 100")
 
     if errors:
         print("FAIL: pip_audit.json incomplete:", file=sys.stderr)

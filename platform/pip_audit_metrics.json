@@ -1,7 +1,7 @@
 {
-  "total_dependencies": 37,
-  "direct_dependencies": 3,
-  "transitive_dependencies": 34,
+  "total_dependencies": 38,
+  "direct_dependencies": 2,
+  "transitive_dependencies": 36,
   "total_vulnerabilities": 0,
   "known_cve_count": 0,
   "critical_cve_count": 0,
@@ -127,9 +127,9 @@
       "Outdated Dependency Detection": 100.0
     },
     "full_metrics_payload": {
-      "total_dependencies": 37,
-      "direct_dependencies": 3,
-      "transitive_dependencies": 34,
+      "total_dependencies": 38,
+      "direct_dependencies": 2,
+      "transitive_dependencies": 36,
       "total_vulnerabilities": 0,
       "known_cve_count": 0,
       "critical_cve_count": 0,
@@ -177,7 +177,7 @@
           "pip_audit_report.json"
         ],
         "raw_parameters": {
-          "transitive_dependencies": 34,
+          "transitive_dependencies": 36,
           "transitive_vulnerable_count": 0,
           "hidden_relationship_risk": 0.0,
           "transitive_risk_score": 0.0
@@ -230,7 +230,7 @@
           "pip_audit_report.json"
         ],
         "raw_parameters": {
-          "total_dependencies": 37,
+          "total_dependencies": 38,
           "community_vitality_score": 100.0,
           "vitality_score": 0.0
         },

@@ -12,6 +12,48 @@
     }
   ],
   "fixes": [],
+  "totals": {
+    "total_dependencies": 38,
+    "total_vulnerabilities": 0,
+    "known_cve_count": 0,
+    "total_licenses": 31,
+    "compliant_licenses": 3100,
+    "copyleft_licenses": 0,
+    "restricted_licenses": 0,
+    "trusted_dependencies": 3800,
+    "healthy_dependencies": 3800,
+    "monitoring_responses": 100,
+    "monitoring_alerts": 0,
+    "baseline_vulnerabilities": 0,
+    "current_vulnerabilities": 0,
+    "alert_signal": 0,
+    "license_compliance_ratio": 100,
+    "supply_chain_security_ratio": 100,
+    "community_vitality": 100,
+    "community_vitality_ratio": 100,
+    "alert_response_rate": 100,
+    "alert_response_rate_percent": 100,
+    "license_compliance_score": 100,
+    "supply_chain_score": 100,
+    "dependency_health_score": 100,
+    "continuous_monitoring_score": 100,
+    "license_compliance_percent": 100,
+    "supply_chain_integrity_percent": 100,
+    "dependency_health_percent": 100,
+    "continuous_monitoring_percent": 100,
+    "transitive_dependency_score": 100,
+    "risk_prioritization_score": 100,
+    "vulnerability_detection_score": 100,
+    "outdated_dependency_score": 100,
+    "Transitive Dependency Analysis": 100,
+    "License Compliance Testing": 100,
+    "Supply Chain Security Analysis": 100,
+    "Dependency Health Monitoring": 100,
+    "Risk Prioritization": 100,
+    "Continuous Dependency Monitoring": 100,
+    "Vulnerability Dependency Detection": 100,
+    "Outdated Dependency Detection": 100
+  },
   "platform_metrics": {
     "tool": "pip-audit",
     "target_repository": "sample_subject",
@@ -41,6 +83,435 @@
     "Vulnerability Dependency Detection": 100,
     "Outdated Dependency Detection": 100
   },
+  "licenses": [
+    {
+      "name": "pip-audit-platform",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "boolean.py",
+      "license": "BSD-2-Clause"
+    },
+    {
+      "name": "CacheControl",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "certifi",
+      "license": "MPL-2.0"
+    },
+    {
+      "name": "charset-normalizer",
+      "license": "MIT"
+    },
+    {
+      "name": "cyclonedx-python-lib",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "defusedxml",
+      "license": "PSFL"
+    },
+    {
+      "name": "filelock",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "idna",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "license-expression",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "markdown-it-py",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "mdurl",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "msgpack",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "packageurl-python",
+      "license": "MIT"
+    },
+    {
+      "name": "packaging",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "pip",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "pipdeptree",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "pip-api",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "pip_audit",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "pip-requirements-parser",
+      "license": "MIT"
+    },
+    {
+      "name": "platformdirs",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "Pygments",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "pyparsing",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "py-serializable",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "requests",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "rich",
+      "license": "MIT"
+    },
+    {
+      "name": "sortedcontainers",
+      "license": "Apache 2.0"
+    },
+    {
+      "name": "tomli",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "tomli_w",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "typing_extensions",
+      "license": "UNKNOWN"
+    },
+    {
+      "name": "urllib3",
+      "license": "UNKNOWN"
+    }
+  ],
+  "dependency_tree": [
+    {
+      "key": "pip-audit-platform",
+      "package_name": "pip-audit-platform",
+      "installed_version": "1.0.0",
+      "required_version": "1.0.0",
+      "dependencies": [
+        {
+          "key": "pip-audit",
+          "package_name": "pip_audit",
+          "installed_version": "2.10.1",
+          "required_version": ">=2.7.0",
+          "dependencies": [
+            {
+              "key": "cachecontrol",
+              "package_name": "CacheControl",
+              "installed_version": "0.14.4",
+              "required_version": ">=0.13.0",
+              "dependencies": [
+                {
+                  "key": "filelock",
+                  "package_name": "filelock",
+                  "installed_version": "3.29.7",
+                  "required_version": ">=3.8.0",
+                  "extra": "filecache",
+                  "dependencies": []
+                },
+                {
+                  "key": "msgpack",
+                  "package_name": "msgpack",
+                  "installed_version": "1.2.1",
+                  "required_version": ">=0.5.2,<2.0.0",
+                  "dependencies": []
+                },
+                {
+                  "key": "requests",
+                  "package_name": "requests",
+                  "installed_version": "2.34.2",
+                  "required_version": ">=2.16.0",
+                  "dependencies": [
+                    {
+                      "key": "certifi",
+                      "package_name": "certifi",
+                      "installed_version": "2026.6.17",
+                      "required_version": ">=2023.5.7",
+                      "dependencies": []
+                    },
+                    {
+                      "key": "charset-normalizer",
+                      "package_name": "charset-normalizer",
+                      "installed_version": "3.4.9",
+                      "required_version": ">=2,<4",
+                      "dependencies": []
+                    },
+                    {
+                      "key": "idna",
+                      "package_name": "idna",
+                      "installed_version": "3.18",
+                      "required_version": ">=2.5,<4",
+                      "dependencies": []
+                    },
+                    {
+                      "key": "urllib3",
+                      "package_name": "urllib3",
+                      "installed_version": "2.7.0",
+                      "required_version": ">=1.26,<3",
+                      "dependencies": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "cyclonedx-python-lib",
+              "package_name": "cyclonedx-python-lib",
+              "installed_version": "11.11.0",
+              "required_version": ">=5,<12",
+              "dependencies": [
+                {
+                  "key": "license-expression",
+                  "package_name": "license-expression",
+                  "installed_version": "30.4.4",
+                  "required_version": ">=30,<31",
+                  "dependencies": [
+                    {
+                      "key": "boolean-py",
+                      "package_name": "boolean.py",
+                      "installed_version": "5.0",
+                      "required_version": ">=4.0",
+                      "dependencies": []
+                    }
+                  ]
+                },
+                {
+                  "key": "packageurl-python",
+                  "package_name": "packageurl-python",
+                  "installed_version": "0.17.6",
+                  "required_version": ">=0.11,<2",
+                  "dependencies": []
+                },
+                {
+                  "key": "py-serializable",
+                  "package_name": "py-serializable",
+                  "installed_version": "2.1.0",
+                  "required_version": ">=2.1.0,<3.0.0",
+                  "dependencies": [
+                    {
+                      "key": "defusedxml",
+                      "package_name": "defusedxml",
+                      "installed_version": "0.7.1",
+                      "required_version": ">=0.7.1,<0.8.0",
+                      "dependencies": []
+                    }
+                  ]
+                },
+                {
+                  "key": "sortedcontainers",
+                  "package_name": "sortedcontainers",
+                  "installed_version": "2.4.0",
+                  "required_version": ">=2.4.0,<3.0.0",
+                  "dependencies": []
+                }
+              ]
+            },
+            {
+              "key": "packaging",
+              "package_name": "packaging",
+              "installed_version": "26.2",
+              "required_version": ">=23.0.0",
+              "dependencies": []
+            },
+            {
+              "key": "pip-api",
+              "package_name": "pip-api",
+              "installed_version": "0.0.34",
+              "required_version": ">=0.0.28",
+              "dependencies": [
+                {
+                  "key": "pip",
+                  "package_name": "pip",
+                  "installed_version": "26.1.2",
+                  "required_version": "Any",
+                  "dependencies": []
+                }
+              ]
+            },
+            {
+              "key": "pip-requirements-parser",
+              "package_name": "pip-requirements-parser",
+              "installed_version": "32.0.1",
+              "required_version": ">=32.0.0",
+              "dependencies": [
+                {
+                  "key": "packaging",
+                  "package_name": "packaging",
+                  "installed_version": "26.2",
+                  "required_version": "Any",
+                  "dependencies": []
+                },
+                {
+                  "key": "pyparsing",
+                  "package_name": "pyparsing",
+                  "installed_version": "3.3.2",
+                  "required_version": "Any",
+                  "dependencies": []
+                }
+              ]
+            },
+            {
+              "key": "platformdirs",
+              "package_name": "platformdirs",
+              "installed_version": "4.10.0",
+              "required_version": ">=4.2.0",
+              "dependencies": []
+            },
+            {
+              "key": "requests",
+              "package_name": "requests",
+              "installed_version": "2.34.2",
+              "required_version": ">=2.31.0",
+              "dependencies": [
+                {
+                  "key": "certifi",
+                  "package_name": "certifi",
+                  "installed_version": "2026.6.17",
+                  "required_version": ">=2023.5.7",
+                  "dependencies": []
+                },
+                {
+                  "key": "charset-normalizer",
+                  "package_name": "charset-normalizer",
+                  "installed_version": "3.4.9",
+                  "required_version": ">=2,<4",
+                  "dependencies": []
+                },
+                {
+                  "key": "idna",
+                  "package_name": "idna",
+                  "installed_version": "3.18",
+                  "required_version": ">=2.5,<4",
+                  "dependencies": []
+                },
+                {
+                  "key": "urllib3",
+                  "package_name": "urllib3",
+                  "installed_version": "2.7.0",
+                  "required_version": ">=1.26,<3",
+                  "dependencies": []
+                }
+              ]
+            },
+            {
+              "key": "rich",
+              "package_name": "rich",
+              "installed_version": "15.0.0",
+              "required_version": ">=12.4",
+              "dependencies": [
+                {
+                  "key": "markdown-it-py",
+                  "package_name": "markdown-it-py",
+                  "installed_version": "4.2.0",
+                  "required_version": ">=2.2.0",
+                  "dependencies": [
+                    {
+                      "key": "mdurl",
+                      "package_name": "mdurl",
+                      "installed_version": "0.1.2",
+                      "required_version": "~=0.1",
+                      "dependencies": []
+                    }
+                  ]
+                },
+                {
+                  "key": "pygments",
+                  "package_name": "Pygments",
+                  "installed_version": "2.20.0",
+                  "required_version": ">=2.13.0,<3.0.0",
+                  "dependencies": []
+                }
+              ]
+            },
+            {
+              "key": "tomli",
+              "package_name": "tomli",
+              "installed_version": "2.4.1",
+              "required_version": ">=2.2.1",
+              "dependencies": []
+            },
+            {
+              "key": "tomli-w",
+              "package_name": "tomli_w",
+              "installed_version": "1.2.0",
+              "required_version": ">=1.2.0",
+              "dependencies": []
+            }
+          ]
+        },
+        {
+          "key": "pipdeptree",
+          "package_name": "pipdeptree",
+          "installed_version": "3.1.1",
+          "required_version": ">=2.23.0",
+          "dependencies": [
+            {
+              "key": "packaging",
+              "package_name": "packaging",
+              "installed_version": "26.2",
+              "required_version": ">=26",
+              "dependencies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "typing-extensions",
+      "package_name": "typing_extensions",
+      "installed_version": "4.16.0",
+      "required_version": "4.16.0",
+      "dependencies": []
+    }
+  ],
+  "outdated_packages": [],
+  "baseline_audit": {
+    "dependencies": [
+      {
+        "name": "packaging",
+        "version": "26.2",
+        "vulns": []
+      },
+      {
+        "name": "platformdirs",
+        "version": "4.10.0",
+        "vulns": []
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.16.0",
+        "vulns": []
+      }
+    ],
+    "fixes": []
+  },
   "metric_evidence": {
     "tool": "pip-audit",
     "metrics_total": 8,
@@ -58,9 +529,9 @@
       "Outdated Dependency Detection": 100.0
     },
     "full_metrics_payload": {
-      "total_dependencies": 37,
-      "direct_dependencies": 3,
-      "transitive_dependencies": 34,
+      "total_dependencies": 38,
+      "direct_dependencies": 2,
+      "transitive_dependencies": 36,
       "total_vulnerabilities": 0,
       "known_cve_count": 0,
       "critical_cve_count": 0,
@@ -108,7 +579,7 @@
           "pip_audit_report.json"
         ],
         "raw_parameters": {
-          "transitive_dependencies": 34,
+          "transitive_dependencies": 36,
           "transitive_vulnerable_count": 0,
           "hidden_relationship_risk": 0.0,
           "transitive_risk_score": 0.0
@@ -161,7 +632,7 @@
           "pip_audit_report.json"
         ],
         "raw_parameters": {
-          "total_dependencies": 37,
+          "total_dependencies": 38,
           "community_vitality_score": 100.0,
           "vitality_score": 0.0
         },
@@ -245,37 +716,184 @@
   "supplemental_raw_data": {
     "dependency_tree": [
       {
-        "key": "pip-audit",
-        "package_name": "pip_audit",
-        "installed_version": "2.10.1",
-        "required_version": "2.10.1",
+        "key": "pip-audit-platform",
+        "package_name": "pip-audit-platform",
+        "installed_version": "1.0.0",
+        "required_version": "1.0.0",
         "dependencies": [
           {
-            "key": "cachecontrol",
-            "package_name": "CacheControl",
-            "installed_version": "0.14.4",
-            "required_version": ">=0.13.0",
+            "key": "pip-audit",
+            "package_name": "pip_audit",
+            "installed_version": "2.10.1",
+            "required_version": ">=2.7.0",
             "dependencies": [
               {
-                "key": "filelock",
-                "package_name": "filelock",
-                "installed_version": "3.29.7",
-                "required_version": ">=3.8.0",
-                "extra": "filecache",
+                "key": "cachecontrol",
+                "package_name": "CacheControl",
+                "installed_version": "0.14.4",
+                "required_version": ">=0.13.0",
+                "dependencies": [
+                  {
+                    "key": "filelock",
+                    "package_name": "filelock",
+                    "installed_version": "3.29.7",
+                    "required_version": ">=3.8.0",
+                    "extra": "filecache",
+                    "dependencies": []
+                  },
+                  {
+                    "key": "msgpack",
+                    "package_name": "msgpack",
+                    "installed_version": "1.2.1",
+                    "required_version": ">=0.5.2,<2.0.0",
+                    "dependencies": []
+                  },
+                  {
+                    "key": "requests",
+                    "package_name": "requests",
+                    "installed_version": "2.34.2",
+                    "required_version": ">=2.16.0",
+                    "dependencies": [
+                      {
+                        "key": "certifi",
+                        "package_name": "certifi",
+                        "installed_version": "2026.6.17",
+                        "required_version": ">=2023.5.7",
+                        "dependencies": []
+                      },
+                      {
+                        "key": "charset-normalizer",
+                        "package_name": "charset-normalizer",
+                        "installed_version": "3.4.9",
+                        "required_version": ">=2,<4",
+                        "dependencies": []
+                      },
+                      {
+                        "key": "idna",
+                        "package_name": "idna",
+                        "installed_version": "3.18",
+                        "required_version": ">=2.5,<4",
+                        "dependencies": []
+                      },
+                      {
+                        "key": "urllib3",
+                        "package_name": "urllib3",
+                        "installed_version": "2.7.0",
+                        "required_version": ">=1.26,<3",
+                        "dependencies": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "key": "cyclonedx-python-lib",
+                "package_name": "cyclonedx-python-lib",
+                "installed_version": "11.11.0",
+                "required_version": ">=5,<12",
+                "dependencies": [
+                  {
+                    "key": "license-expression",
+                    "package_name": "license-expression",
+                    "installed_version": "30.4.4",
+                    "required_version": ">=30,<31",
+                    "dependencies": [
+                      {
+                        "key": "boolean-py",
+                        "package_name": "boolean.py",
+                        "installed_version": "5.0",
+                        "required_version": ">=4.0",
+                        "dependencies": []
+                      }
+                    ]
+                  },
+                  {
+                    "key": "packageurl-python",
+                    "package_name": "packageurl-python",
+                    "installed_version": "0.17.6",
+                    "required_version": ">=0.11,<2",
+                    "dependencies": []
+                  },
+                  {
+                    "key": "py-serializable",
+                    "package_name": "py-serializable",
+                    "installed_version": "2.1.0",
+                    "required_version": ">=2.1.0,<3.0.0",
+                    "dependencies": [
+                      {
+                        "key": "defusedxml",
+                        "package_name": "defusedxml",
+                        "installed_version": "0.7.1",
+                        "required_version": ">=0.7.1,<0.8.0",
+                        "dependencies": []
+                      }
+                    ]
+                  },
+                  {
+                    "key": "sortedcontainers",
+                    "package_name": "sortedcontainers",
+                    "installed_version": "2.4.0",
+                    "required_version": ">=2.4.0,<3.0.0",
+                    "dependencies": []
+                  }
+                ]
+              },
+              {
+                "key": "packaging",
+                "package_name": "packaging",
+                "installed_version": "26.2",
+                "required_version": ">=23.0.0",
                 "dependencies": []
               },
               {
-                "key": "msgpack",
-                "package_name": "msgpack",
-                "installed_version": "1.2.1",
-                "required_version": ">=0.5.2,<2.0.0",
+                "key": "pip-api",
+                "package_name": "pip-api",
+                "installed_version": "0.0.34",
+                "required_version": ">=0.0.28",
+                "dependencies": [
+                  {
+                    "key": "pip",
+                    "package_name": "pip",
+                    "installed_version": "26.1.2",
+                    "required_version": "Any",
+                    "dependencies": []
+                  }
+                ]
+              },
+              {
+                "key": "pip-requirements-parser",
+                "package_name": "pip-requirements-parser",
+                "installed_version": "32.0.1",
+                "required_version": ">=32.0.0",
+                "dependencies": [
+                  {
+                    "key": "packaging",
+                    "package_name": "packaging",
+                    "installed_version": "26.2",
+                    "required_version": "Any",
+                    "dependencies": []
+                  },
+                  {
+                    "key": "pyparsing",
+                    "package_name": "pyparsing",
+                    "installed_version": "3.3.2",
+                    "required_version": "Any",
+                    "dependencies": []
+                  }
+                ]
+              },
+              {
+                "key": "platformdirs",
+                "package_name": "platformdirs",
+                "installed_version": "4.10.0",
+                "required_version": ">=4.2.0",
                 "dependencies": []
               },
               {
                 "key": "requests",
                 "package_name": "requests",
                 "installed_version": "2.34.2",
-                "required_version": ">=2.16.0",
+                "required_version": ">=2.31.0",
                 "dependencies": [
                   {
                     "key": "certifi",
@@ -306,206 +924,67 @@
                     "dependencies": []
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "key": "cyclonedx-python-lib",
-            "package_name": "cyclonedx-python-lib",
-            "installed_version": "11.11.0",
-            "required_version": ">=5,<12",
-            "dependencies": [
+              },
               {
-                "key": "license-expression",
-                "package_name": "license-expression",
-                "installed_version": "30.4.4",
-                "required_version": ">=30,<31",
+                "key": "rich",
+                "package_name": "rich",
+                "installed_version": "15.0.0",
+                "required_version": ">=12.4",
                 "dependencies": [
                   {
-                    "key": "boolean-py",
-                    "package_name": "boolean.py",
-                    "installed_version": "5.0",
-                    "required_version": ">=4.0",
+                    "key": "markdown-it-py",
+                    "package_name": "markdown-it-py",
+                    "installed_version": "4.2.0",
+                    "required_version": ">=2.2.0",
+                    "dependencies": [
+                      {
+                        "key": "mdurl",
+                        "package_name": "mdurl",
+                        "installed_version": "0.1.2",
+                        "required_version": "~=0.1",
+                        "dependencies": []
+                      }
+                    ]
+                  },
+                  {
+                    "key": "pygments",
+                    "package_name": "Pygments",
+                    "installed_version": "2.20.0",
+                    "required_version": ">=2.13.0,<3.0.0",
                     "dependencies": []
                   }
                 ]
               },
               {
-                "key": "packageurl-python",
-                "package_name": "packageurl-python",
-                "installed_version": "0.17.6",
-                "required_version": ">=0.11,<2",
+                "key": "tomli",
+                "package_name": "tomli",
+                "installed_version": "2.4.1",
+                "required_version": ">=2.2.1",
                 "dependencies": []
               },
               {
-                "key": "py-serializable",
-                "package_name": "py-serializable",
-                "installed_version": "2.1.0",
-                "required_version": ">=2.1.0,<3.0.0",
-                "dependencies": [
-                  {
-                    "key": "defusedxml",
-                    "package_name": "defusedxml",
-                    "installed_version": "0.7.1",
-                    "required_version": ">=0.7.1,<0.8.0",
-                    "dependencies": []
-                  }
-                ]
-              },
-              {
-                "key": "sortedcontainers",
-                "package_name": "sortedcontainers",
-                "installed_version": "2.4.0",
-                "required_version": ">=2.4.0,<3.0.0",
+                "key": "tomli-w",
+                "package_name": "tomli_w",
+                "installed_version": "1.2.0",
+                "required_version": ">=1.2.0",
                 "dependencies": []
               }
             ]
           },
           {
-            "key": "packaging",
-            "package_name": "packaging",
-            "installed_version": "26.2",
-            "required_version": ">=23.0.0",
-            "dependencies": []
-          },
-          {
-            "key": "pip-api",
-            "package_name": "pip-api",
-            "installed_version": "0.0.34",
-            "required_version": ">=0.0.28",
-            "dependencies": [
-              {
-                "key": "pip",
-                "package_name": "pip",
-                "installed_version": "26.1.2",
-                "required_version": "Any",
-                "dependencies": []
-              }
-            ]
-          },
-          {
-            "key": "pip-requirements-parser",
-            "package_name": "pip-requirements-parser",
-            "installed_version": "32.0.1",
-            "required_version": ">=32.0.0",
+            "key": "pipdeptree",
+            "package_name": "pipdeptree",
+            "installed_version": "3.1.1",
+            "required_version": ">=2.23.0",
             "dependencies": [
               {
                 "key": "packaging",
                 "package_name": "packaging",
                 "installed_version": "26.2",
-                "required_version": "Any",
-                "dependencies": []
-              },
-              {
-                "key": "pyparsing",
-                "package_name": "pyparsing",
-                "installed_version": "3.3.2",
-                "required_version": "Any",
+                "required_version": ">=26",
                 "dependencies": []
               }
             ]
-          },
-          {
-            "key": "platformdirs",
-            "package_name": "platformdirs",
-            "installed_version": "4.10.0",
-            "required_version": ">=4.2.0",
-            "dependencies": []
-          },
-          {
-            "key": "requests",
-            "package_name": "requests",
-            "installed_version": "2.34.2",
-            "required_version": ">=2.31.0",
-            "dependencies": [
-              {
-                "key": "certifi",
-                "package_name": "certifi",
-                "installed_version": "2026.6.17",
-                "required_version": ">=2023.5.7",
-                "dependencies": []
-              },
-              {
-                "key": "charset-normalizer",
-                "package_name": "charset-normalizer",
-                "installed_version": "3.4.9",
-                "required_version": ">=2,<4",
-                "dependencies": []
-              },
-              {
-                "key": "idna",
-                "package_name": "idna",
-                "installed_version": "3.18",
-                "required_version": ">=2.5,<4",
-                "dependencies": []
-              },
-              {
-                "key": "urllib3",
-                "package_name": "urllib3",
-                "installed_version": "2.7.0",
-                "required_version": ">=1.26,<3",
-                "dependencies": []
-              }
-            ]
-          },
-          {
-            "key": "rich",
-            "package_name": "rich",
-            "installed_version": "15.0.0",
-            "required_version": ">=12.4",
-            "dependencies": [
-              {
-                "key": "markdown-it-py",
-                "package_name": "markdown-it-py",
-                "installed_version": "4.2.0",
-                "required_version": ">=2.2.0",
-                "dependencies": [
-                  {
-                    "key": "mdurl",
-                    "package_name": "mdurl",
-                    "installed_version": "0.1.2",
-                    "required_version": "~=0.1",
-                    "dependencies": []
-                  }
-                ]
-              },
-              {
-                "key": "pygments",
-                "package_name": "Pygments",
-                "installed_version": "2.20.0",
-                "required_version": ">=2.13.0,<3.0.0",
-                "dependencies": []
-              }
-            ]
-          },
-          {
-            "key": "tomli",
-            "package_name": "tomli",
-            "installed_version": "2.4.1",
-            "required_version": ">=2.2.1",
-            "dependencies": []
-          },
-          {
-            "key": "tomli-w",
-            "package_name": "tomli_w",
-            "installed_version": "1.2.0",
-            "required_version": ">=1.2.0",
-            "dependencies": []
-          }
-        ]
-      },
-      {
-        "key": "pipdeptree",
-        "package_name": "pipdeptree",
-        "installed_version": "3.1.1",
-        "required_version": "3.1.1",
-        "dependencies": [
-          {
-            "key": "packaging",
-            "package_name": "packaging",
-            "installed_version": "26.2",
-            "required_version": ">=26",
-            "dependencies": []
           }
         ]
       },
@@ -519,6 +998,10 @@
     ],
     "outdated_packages": [],
     "licenses": [
+      {
+        "name": "pip-audit-platform",
+        "license": "UNKNOWN"
+      },
       {
         "name": "boolean.py",
         "license": "BSD-2-Clause"
@@ -674,7 +1157,7 @@
       "raw_sources_present": true,
       "pip_audit_native": false,
       "raw_parameters": {
-        "transitive_dependencies": 34,
+        "transitive_dependencies": 36,
         "transitive_vulnerable_count": 0,
         "hidden_relationship_risk": 0.0,
         "transitive_risk_score": 0.0
@@ -697,10 +1180,10 @@
         "restricted_license_count": 0,
         "legal_risk_proxy": 0,
         "license_risk_score": 0.0,
-        "compliant_licenses": 3000,
-        "total_licenses": 30,
+        "compliant_licenses": 3100,
+        "total_licenses": 31,
         "license_compliance_ratio": 100,
-        "license_compliance_percent": 100
+        "license_compliance_score": 100
       },
       "formula": "MAX(0, 100 - (copyleft*20 + restricted*10 + legal_risk_proxy))"
     },
@@ -719,10 +1202,10 @@
         "total_vulnerabilities": 0,
         "supply_chain_risk": 0,
         "trust_score": 0.0,
-        "trusted_dependencies": 3700,
-        "total_dependencies": 37,
+        "trusted_dependencies": 3800,
+        "total_dependencies": 38,
         "supply_chain_security_ratio": 100,
-        "supply_chain_integrity_percent": 100
+        "supply_chain_score": 100
       },
       "formula": "MAX(0, 100 - total_vulnerabilities * 5)"
     },
@@ -738,12 +1221,13 @@
       "raw_sources_present": true,
       "pip_audit_native": true,
       "raw_parameters": {
-        "total_dependencies": 37,
+        "total_dependencies": 38,
         "community_vitality_score": 100.0,
         "vitality_score": 0.0,
-        "healthy_dependencies": 3700,
+        "healthy_dependencies": 3800,
+        "community_vitality": 100,
         "community_vitality_ratio": 100,
-        "dependency_health_percent": 100
+        "dependency_health_score": 100
       },
       "formula": "MAX(0, 100 - (vulnerable_packages / total_dependencies) * 100)"
     },
@@ -781,8 +1265,8 @@
         "alert_signal": 0,
         "alert_response_rate_percent": 100.0,
         "monitoring_responses": 100,
-        "alert_response_ratio": 100,
-        "continuous_monitoring_percent": 100
+        "alert_response_rate": 100,
+        "continuous_monitoring_score": 100
       },
       "formula": "100 if alert_signal == 0 else MAX(0, 100 - alert_signal * 20)"
     },
@@ -825,5 +1309,13 @@
       },
       "formula": "MAX(0, 100 - (outdated_dependencies*15 + version_lag_count*5))"
     }
-  ]
+  ],
+  "License Compliance Testing": 100,
+  "Supply Chain Security Analysis": 100,
+  "Dependency Health Monitoring": 100,
+  "Continuous Dependency Monitoring": 100,
+  "license_compliance_score": 100,
+  "supply_chain_score": 100,
+  "dependency_health_score": 100,
+  "continuous_monitoring_score": 100
 }

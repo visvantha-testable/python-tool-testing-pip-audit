@@ -50,6 +50,8 @@ def trigger(*, skip_verify: bool = False) -> int:
     if not py.exists():
         _run([sys.executable, "-m", "venv", str(SAMPLE_DIR / ".venv")])
 
+    _run([sys.executable, "-m", "pip", "install", "-e", str(ROOT), "-q"])
+
     _run([str(py), "-m", "pip", "install", "-U", "pip", "-q"])
     _run([str(py), "-m", "pip", "install", "-r", str(SAMPLE_REQ), "-q"])
     _run([str(py), "-m", "pip", "install", "pip-audit", "pipdeptree", "-q"])
