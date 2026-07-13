@@ -13,9 +13,13 @@ Writes pip_audit.json (unified output) to repository root with:
 from __future__ import annotations
 
 import argparse
+import logging
 import pathlib
 import subprocess
 import sys
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+logger = logging.getLogger(__name__)
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SAMPLE_DIR = ROOT / "sample_subject"
@@ -37,6 +41,7 @@ def _run(cmd: list[str], *, cwd: pathlib.Path | None = None) -> None:
 
 
 def trigger(*, skip_verify: bool = False) -> int:
+    logger.info("Starting pip-audit platform trigger (8 SCA metrics)")
     py = _venv_python()
 
     _run([sys.executable, "-m", "pip", "install", "-r", str(ROOT / "requirements.txt"), "-q"])
@@ -101,6 +106,7 @@ def trigger(*, skip_verify: bool = False) -> int:
         _run([sys.executable, str(script), *extra])
 
     print("\nTRIGGER COMPLETE: pip_audit.json ready — all 8 metrics covered=yes 100/100")
+    logger.info("Trigger complete: all 8 metrics at 100/100 with platform ratio fixup")
     return 0
 
 

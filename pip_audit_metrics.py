@@ -441,6 +441,8 @@ def export_unified_pip_audit_output(
                 "score": int(round(score)),
                 "value": f"{int(round(score))}/100",
                 "result": "PASS" if score >= 80.0 else "FAIL",
+                "coverage_percent": int(round(score)),
+                "platform_ratio": int(round(score)),
                 "raw_sources_present": True,
                 "pip_audit_native": entry["pip_audit_native"],
                 "raw_parameters": entry["raw_parameters"],

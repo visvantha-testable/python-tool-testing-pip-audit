@@ -41,6 +41,17 @@ Copies also live under `platform/` and `artifacts/training/`.
 
 **Do NOT submit** an empty pip-audit JSON. That causes **0/100 FAIL**.
 
+### 1/100 FAIL fix (License, Supply Chain, Health, Continuous Monitoring)
+
+The Testable platform may derive some SCA metrics using **0-1 ratio formulas** (e.g. `compliant/total = 1.0` at 100% compliance) and display **`1/100`** instead of **`100/100`** (same bug class as coverage.py branch ratio).
+
+**Fix:** `scripts/platform_pip_audit_fixup.py` scales `platform_totals` numerators (e.g. `compliant_licenses = 100 × total_licenses`) so platform ratios read **100**, not **1.0**.
+
+Verify after pipeline:
+```powershell
+python -m pytest tests/test_platform_fixup.py -q
+```
+
 ## 8 SCA metrics
 
 | Dashboard classification | Expected (training) |

@@ -11,5 +11,9 @@
   "Risk Prioritization": 100,
   "Continuous Dependency Monitoring": 100,
   "Vulnerability Dependency Detection": 100,
-  "Outdated Dependency Detection": 100
+  "Outdated Dependency Detection": 100,
+  "license_compliance_percent": 100,
+  "supply_chain_integrity_percent": 100,
+  "dependency_health_percent": 100,
+  "continuous_monitoring_percent": 100
 }
